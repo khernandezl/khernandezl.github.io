@@ -428,8 +428,8 @@
 </div>
 
 <script>
-  // Update with your Google Apps Script URL
-  var SHEET_URL = 'https://script.google.com/macros/s/AKfycbzu0MXmM9SurAltfvxs63BYY1IhWS0qiuRBDuqTgaD6KHPj9gbCH4Qpm-F_ZlwZJjlF/exec';
+  
+  var SHEET_URL = 'https://script.google.com/macros/s/AKfycbzNhxuNJR3yKIBHGoFrN4fWY8MRKqbK_zI4MI1oEfCZa56noCzf-53TMHzMvi-mIo26/exec';
 
   var asistencia = null;
   var numPersonas = 0;
@@ -606,19 +606,31 @@
       mensaje: asistencia === 'no' ? document.getElementById('nombresAsist').value.trim() : ''
     };
 
-    fetch(SHEET_URL, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'text/plain' },
-      body: JSON.stringify(payload)
-    })
-    .then(function(){
-      mostrarGracias();
-    })
-    .catch(function(error){
-      console.error('Error:', error);
-      mostrarGracias();
-    });
+    // Usamos un formulario oculto + iframe para evitar CORS
+    var iframe = document.createElement('iframe');
+    iframe.name = 'submitFrame';
+    iframe.style.display = 'none';
+    document.body.appendChild(iframe);
+
+    var form = document.createElement('form');
+    form.method = 'POST';
+    form.action = SHEET_URL;
+    form.target = 'submitFrame';
+    form.style.display = 'none';
+
+    for (var key in payload) {
+      var inp = document.createElement('input');
+      inp.type = 'hidden';
+      inp.name = key;
+      inp.value = payload[key];
+      form.appendChild(inp);
+    }
+
+    document.body.appendChild(form);
+    form.submit();
+
+    // La respuesta del script se carga en el iframe, mostramos gracias
+    mostrarGracias();
   }
 
   function mostrarGracias(){
