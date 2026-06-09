@@ -281,7 +281,7 @@
     <span class="arrow">▼</span>
   </div>
   <div class="intro-body" id="introBody">
-    <p>Con mucha alegría queremos contar contigo en un momento muy especial para nosotros. Nuestra boda se realizará en <strong>Chinauta</strong>, y antes de enviar la invitación formal, queremos confirmar con exactitud quiénes podrán acompañarnos.</p>
+    <p>Con mucha alegría queremos contar contigo en un momento muy especial para nosotros. Nuestra boda se realizará en <strong>Chinauta</strong>, y antes de enviar la invitación formal, queremos conocer tu disponibilidad.</p>
     <p>Te pedimos que respondas con total sinceridad, ya que cada confirmación será tenida en cuenta para la organización del evento, la reserva de cupos y la alimentación.</p>
     <p>Sabemos que, por tratarse de un lugar retirado de Bogotá, para algunas personas puede ser difícil asistir, y lo entendemos perfectamente.</p>
     <span class="quote">"Lo más importante es poder contar con una respuesta clara y honesta."</span>
@@ -428,7 +428,8 @@
 </div>
 
 <script>
-  var SHEET_URL = 'https://script.google.com/macros/s/AKfycbyY1NApPoOP3vb6XRoDBgJRBcxXj7ssS-SluTZy7RdqlagP-8sDV4rdjp5Bu04JEDAC/exec';
+  // Update with your Google Apps Script URL
+  var SHEET_URL = 'https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec';
 
   var asistencia = null;
   var numPersonas = 0;
@@ -605,18 +606,17 @@
       mensaje: asistencia === 'no' ? document.getElementById('nombresAsist').value.trim() : ''
     };
 
-    // Google Apps Script requiere no-cors
     fetch(SHEET_URL, {
       method: 'POST',
       mode: 'no-cors',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'text/plain' },
       body: JSON.stringify(payload)
     })
     .then(function(){
       mostrarGracias();
     })
-    .catch(function(){
-      // no-cors siempre resuelve, este catch es por si hay error de red
+    .catch(function(error){
+      console.error('Error:', error);
       mostrarGracias();
     });
   }
