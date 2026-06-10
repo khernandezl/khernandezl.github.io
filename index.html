@@ -15,409 +15,346 @@
       background: #fdf8f3;
       color: #3a2e2a;
       min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
     }
     .wrap {
-      max-width: 640px;
-      margin: 0 auto;
-      padding: 0 1.2rem 4rem;
+      max-width: 500px;
+      width: 100%;
     }
 
-    /* Hero compacto */
+    /* Hero */
     .hero {
       text-align: center;
-      padding: 1.6rem 1rem 1rem;
-      border-bottom: 1px solid #e8ddd4;
-      margin-bottom: 1.4rem;
+      padding: 1rem 0.5rem 0.5rem;
     }
     .eyebrow {
-      font-size: 10px;
+      font-size: 9px;
       letter-spacing: 0.22em;
       text-transform: uppercase;
       color: #b08a6e;
-      margin-bottom: 0.3rem;
+      margin-bottom: 0.15rem;
     }
     .hero h1 {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.8rem, 5vw, 2.4rem);
+      font-size: clamp(1.4rem, 4vw, 1.8rem);
       font-weight: 300;
       color: #2d1e16;
-      line-height: 1.15;
+      line-height: 1.1;
     }
     .hero h1 em { font-style: italic; color: #7d4e2e; }
     .hero-meta {
-      font-size: 12px;
+      font-size: 11px;
       color: #9a8070;
-      margin-top: 0.3rem;
       letter-spacing: 0.06em;
     }
-    .hero-meta span { margin: 0 6px; color: #c9a98a; }
 
-    /* Intro compacto desplegable */
-    .intro-toggle {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: #fff;
-      border: 1px solid #e8ddd4;
-      border-radius: 10px;
-      padding: 0.85rem 1.2rem;
-      margin-bottom: 1.2rem;
-      cursor: pointer;
-      font-size: 13.5px;
-      color: #7d4e2e;
-      font-weight: 500;
-      transition: background 0.2s;
-      -webkit-user-select: none; user-select: none;
-    }
-    .intro-toggle:hover { background: #fef6ee; }
-    .intro-toggle .arrow { font-size: 12px; transition: transform 0.3s; color: #b08a6e; }
-    .intro-toggle.open .arrow { transform: rotate(180deg); }
-
-    .intro-body {
-      display: none;
-      background: #fff;
-      border: 1px solid #e8ddd4;
-      border-top: none;
-      border-radius: 0 0 10px 10px;
-      padding: 1.1rem 1.4rem 1.3rem;
-      font-size: 14.5px;
-      line-height: 1.8;
-      color: #4a3a32;
-      margin-top: -1.1rem;
-      margin-bottom: 1.2rem;
-    }
-    .intro-body p + p { margin-top: 0.7rem; }
-    .intro-body .quote {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1rem;
-      font-style: italic;
-      color: #7d4e2e;
-      display: block;
-      margin-top: 0.8rem;
-      text-align: center;
-    }
-    .deadline-pill {
-      display: inline-flex; align-items: center; gap: 5px;
-      background: #fdf0e6; border: 1px solid #e0c5a8;
-      border-radius: 20px; padding: 4px 12px;
-      font-size: 12.5px; color: #7d4e2e; font-weight: 500;
-      margin-top: 0.8rem;
-    }
-    .center { display: flex; justify-content: center; }
-
-    /* Progress */
-    .progress-bar {
-      height: 3px; background: #e8ddd4;
-      border-radius: 2px; margin-bottom: 1.1rem;
-    }
-    .progress-fill {
-      height: 100%; background: #7d4e2e;
-      border-radius: 2px; transition: width 0.45s ease;
-    }
-    .step-indicator {
-      display: flex; align-items: center;
-      justify-content: center; gap: 6px; margin-bottom: 1.4rem;
-    }
-    .dot { width: 7px; height: 7px; border-radius: 50%; background: #e0cfc3; transition: all 0.3s; }
-    .dot.active { background: #7d4e2e; width: 20px; border-radius: 4px; }
-    .dot.done { background: #b08a6e; }
-
-    /* Cards */
+    /* Card */
     .card {
       background: #fff;
       border: 1px solid #e8ddd4;
       border-radius: 14px;
-      padding: 1.6rem 1.8rem;
-      margin-bottom: 1rem;
+      padding: 1rem 1.2rem;
     }
-    .card h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.5rem; font-weight: 400;
-      color: #2d1e16; margin-bottom: 0.25rem;
+
+    /* Sections */
+    .section { margin-top: 0.7rem; }
+    .section:first-of-type { margin-top: 0; }
+    .section-hidden { display: none; }
+
+    .section-label {
+      display: block;
+      font-size: 12.5px;
+      font-weight: 500;
+      color: #4a3a32;
+      margin-bottom: 4px;
     }
-    .q-sub { font-size: 13.5px; color: #8a7060; margin-bottom: 1.2rem; line-height: 1.5; }
-    .field-label { display: block; font-size: 13.5px; font-weight: 500; color: #4a3a32; margin-bottom: 5px; }
+    .section-desc {
+      font-size: 12px;
+      color: #8a7060;
+      margin-bottom: 0.5rem;
+      line-height: 1.4;
+    }
 
     /* Inputs */
-    input[type="text"], textarea {
-      width: 100%; padding: 12px 14px;
-      font-family: 'Jost', sans-serif; font-size: 16px;
+    input[type="text"] {
+      width: 100%; padding: 10px 12px;
+      font-family: 'Jost', sans-serif; font-size: 14px;
       border: 1.5px solid #ddd0c6; border-radius: 9px;
       background: #fdf9f6; color: #2d1e16; outline: none;
       transition: border-color 0.2s, background 0.2s;
-      -webkit-appearance: none; appearance: none;
     }
-    input[type="text"]:focus, textarea:focus { border-color: #b08a6e; background: #fff; }
-    textarea { resize: vertical; min-height: 80px; }
+    input[type="text"]:focus { border-color: #b08a6e; background: #fff; }
 
     /* Radio */
-    .radio-group { display: flex; flex-direction: column; gap: 9px; }
+    .radio-group {
+      display: flex;
+      flex-direction: row;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
     .radio-opt {
-      display: flex; align-items: flex-start; gap: 11px;
-      padding: 13px 15px; border: 1.5px solid #e0d0c4;
-      border-radius: 10px; cursor: pointer;
+      flex: 1;
+      min-width: 100px;
+      display: flex;
+      align-items: flex-start; gap: 8px;
+      padding: 9px 11px;
+      border: 1.5px solid #e0d0c4;
+      border-radius: 9px;
+      cursor: pointer;
       transition: border-color 0.2s, background 0.2s;
-      font-size: 15.5px; color: #3a2e2a; line-height: 1.4;
-      background: #fdf9f6; -webkit-user-select: none; user-select: none;
+      font-size: 13px;
+      color: #3a2e2a;
+      line-height: 1.3;
+      background: #fdf9f6;
+      -webkit-user-select: none; user-select: none;
     }
     .radio-opt:hover { border-color: #b08a6e; background: #fef6ee; }
     .radio-opt.selected { border-color: #7d4e2e; background: #fef6ee; }
-    .radio-opt input[type="radio"] { width: 20px; height: 20px; min-width: 20px; accent-color: #7d4e2e; margin-top: 2px; cursor: pointer; }
-    .radio-opt small { color: #8a7060; font-size: 13px; }
+    .radio-opt input[type="radio"] { width: 16px; height: 16px; min-width: 16px; accent-color: #7d4e2e; margin-top: 1px; cursor: pointer; }
+    .radio-opt small { color: #8a7060; font-size: 11px; display: block; }
 
     /* Num grid */
-    .num-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 7px; }
+    .num-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 5px; }
     .num-btn {
-      padding: 13px 0; border: 1.5px solid #e0d0c4; border-radius: 9px;
+      padding: 9px 0; border: 1.5px solid #e0d0c4; border-radius: 8px;
       background: #fdf9f6; font-family: 'Jost', sans-serif;
-      font-size: 17px; font-weight: 500; color: #4a3a32;
+      font-size: 14px; font-weight: 500; color: #4a3a32;
       cursor: pointer; transition: all 0.15s; text-align: center;
     }
     .num-btn:hover { border-color: #b08a6e; background: #fef6ee; }
     .num-btn.selected { border-color: #7d4e2e; background: #7d4e2e; color: #fff; }
 
-    /* Hospedaje */
+    /* Textarea */
+    textarea {
+      width: 100%; padding: 10px 12px;
+      font-family: 'Jost', sans-serif; font-size: 14px;
+      border: 1.5px solid #ddd0c6; border-radius: 9px;
+      background: #fdf9f6; color: #2d1e16; outline: none;
+      transition: border-color 0.2s, background 0.2s;
+      resize: vertical; min-height: 52px;
+    }
+    textarea:focus { border-color: #b08a6e; background: #fff; }
+
+    /* Hospedaje info */
     .hospedaje-info {
       background: #fdf0e6; border: 1px solid #e8cdb0;
-      border-radius: 10px; padding: 1.1rem 1.3rem;
-      font-size: 14px; line-height: 1.7; color: #5a3e2a; margin-bottom: 1rem;
+      border-radius: 9px; padding: 0.7rem 1rem;
+      font-size: 12px; line-height: 1.6; color: #5a3e2a; margin-bottom: 0.5rem;
     }
     .hospedaje-info strong { color: #7d4e2e; }
-    .hospedaje-info ul { padding-left: 17px; margin-top: 5px; font-size: 13.5px; }
-    .price-row { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 7px; }
-    .price-item { display: flex; align-items: center; gap: 5px; font-size: 13.5px; }
-    .price-note { margin-top: 8px; font-size: 12.5px; color: #7a6060; }
+    .hospedaje-info ul { padding-left: 15px; margin-top: 3px; font-size: 12px; }
+    .price-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 4px; }
+    .price-item { font-size: 12px; }
 
-    /* Checkboxes */
+    /* Checkbox */
     .confirm-check {
-      display: flex; gap: 11px; align-items: flex-start;
-      padding: 13px 15px; border: 1.5px solid #e0d0c4; border-radius: 10px;
-      background: #fdf9f6; margin-bottom: 8px;
-      cursor: pointer; transition: border-color 0.2s;
+      display: flex; gap: 9px; align-items: flex-start;
+      padding: 9px 11px; border: 1.5px solid #e0d0c4; border-radius: 8px;
+      background: #fdf9f6; cursor: pointer;
+      transition: border-color 0.2s;
       -webkit-user-select: none; user-select: none;
     }
     .confirm-check:hover { border-color: #b08a6e; }
     .confirm-check.selected { border-color: #7d4e2e; background: #fef6ee; }
-    .confirm-check input[type="checkbox"] { width: 20px; height: 20px; min-width: 20px; accent-color: #7d4e2e; margin-top: 2px; cursor: pointer; }
-    .confirm-check span { font-size: 14px; line-height: 1.55; color: #3a2e2a; }
-
-    /* Buttons */
-    .btn-primary {
-      display: block; width: 100%; padding: 15px;
-      background: #7d4e2e; color: #fff; border: none;
-      border-radius: 10px; font-family: 'Jost', sans-serif;
-      font-size: 16px; font-weight: 500; cursor: pointer;
-      letter-spacing: 0.04em;
-      transition: background 0.2s, transform 0.1s; margin-top: 1rem;
-    }
-    .btn-primary:hover { background: #6a3f22; }
-    .btn-primary:active { transform: scale(0.99); }
-    .btn-primary:disabled { background: #c9b0a0; cursor: default; }
-    .btn-back {
-      display: block; width: 100%; padding: 12px;
-      background: transparent; color: #8a7060;
-      border: 1.5px solid #e0d0c4; border-radius: 10px;
-      font-family: 'Jost', sans-serif; font-size: 14.5px;
-      cursor: pointer; margin-top: 7px;
-      transition: border-color 0.2s, color 0.2s;
-    }
-    .btn-back:hover { border-color: #b08a6e; color: #5a3a28; }
+    .confirm-check input[type="checkbox"] { width: 16px; height: 16px; min-width: 16px; accent-color: #7d4e2e; margin-top: 2px; cursor: pointer; }
+    .confirm-check span { font-size: 12px; line-height: 1.45; color: #3a2e2a; }
 
     /* Spinner */
     .spinner {
-      display: inline-block; width: 18px; height: 18px;
+      display: inline-block; width: 16px; height: 16px;
       border: 2px solid rgba(255,255,255,0.4);
       border-top-color: #fff; border-radius: 50%;
-      animation: spin 0.7s linear infinite; vertical-align: middle; margin-right: 8px;
+      animation: spin 0.7s linear infinite; vertical-align: middle; margin-right: 6px;
     }
     @keyframes spin { to { transform: rotate(360deg); } }
 
     /* Error */
-    .error-msg { color: #a02020; font-size: 13px; margin-top: 5px; display: none; }
+    .error-msg { color: #a02020; font-size: 11.5px; margin-top: 3px; display: none; }
 
-    /* Steps */
-    .step { display: none; }
-    .step.active { display: block; }
-
-    /* Resumen */
-    .resumen-box {
-      background: #fdf0e6; border: 1px solid #e8cdb0;
-      border-radius: 10px; padding: 1rem 1.4rem;
-      font-size: 14px; color: #4a3020; line-height: 1.8; margin-bottom: 1.1rem;
+    /* Button */
+    .btn-primary {
+      display: block; width: 100%; padding: 12px;
+      background: #7d4e2e; color: #fff; border: none;
+      border-radius: 9px; font-family: 'Jost', sans-serif;
+      font-size: 14px; font-weight: 500; cursor: pointer;
+      letter-spacing: 0.04em; margin-top: 0.8rem;
+      transition: background 0.2s, transform 0.1s;
     }
+    .btn-primary:hover { background: #6a3f22; }
+    .btn-primary:active { transform: scale(0.99); }
+    .btn-primary:disabled { background: #c9b0a0; cursor: default; }
 
     /* Thank you */
-    .thank-you { text-align: center; padding: 2rem 1rem; }
-    .thank-you .flower { font-size: 3.2rem; display: block; margin-bottom: 0.9rem; }
+    .thank-you { text-align: center; padding: 2rem 1rem; display: none; }
+    .thank-you .flower { font-size: 2.5rem; display: block; margin-bottom: 0.5rem; }
     .thank-you h2 {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 2rem; font-weight: 400; color: #2d1e16; margin-bottom: 0.6rem;
+      font-size: 1.6rem; font-weight: 400; color: #2d1e16; margin-bottom: 0.4rem;
     }
-    .thank-you p { font-size: 15px; color: #6a5a50; line-height: 1.75; }
+    .thank-you p { font-size: 13px; color: #6a5a50; line-height: 1.6; }
     .thank-you .detail {
-      margin-top: 1.2rem; background: #fdf0e6;
-      border: 1px solid #e8cdb0; border-radius: 10px;
-      padding: 0.9rem 1.4rem; font-size: 13.5px; color: #7d4e2e;
+      margin-top: 1rem; background: #fdf0e6;
+      border: 1px solid #e8cdb0; border-radius: 9px;
+      padding: 0.7rem 1.2rem; font-size: 12px; color: #7d4e2e;
     }
 
-    @media (max-width: 420px) {
-      .card { padding: 1.3rem 1.1rem; }
+    /* Form container */
+    .form-container { display: block; }
+
+    @media (max-height: 700px) {
+      .hero { padding: 0.5rem 0.5rem 0.3rem; }
+      .hero h1 { font-size: clamp(1.2rem, 3.5vw, 1.5rem); }
+      .card { padding: 0.7rem 1rem; }
+      .section { margin-top: 0.5rem; }
+      .radio-opt { padding: 7px 9px; font-size: 12px; }
+      .num-btn { padding: 7px 0; font-size: 13px; }
+      input[type="text"] { padding: 8px 10px; font-size: 13px; }
+      textarea { padding: 8px 10px; font-size: 13px; min-height: 42px; }
+      .btn-primary { padding: 10px; font-size: 13px; margin-top: 0.6rem; }
+      .confirm-check { padding: 7px 9px; }
+      .confirm-check span { font-size: 11px; }
+      .hospedaje-info { padding: 0.5rem 0.8rem; font-size: 11px; }
     }
   </style>
 </head>
 <body>
 <div class="wrap">
 
-  <!-- Hero compacto -->
   <div class="hero">
     <p class="eyebrow">Confirmación de Asistencia</p>
     <h1>Boda <em>Dakshmar</em></h1>
-    <p class="hero-meta">Chinauta, Cundinamarca <span>·</span> 2026</p>
+    <p class="hero-meta">Chinauta, Cundinamarca · 2026</p>
   </div>
 
-  <!-- Intro desplegable -->
-  <div class="intro-toggle" id="introToggle" onclick="toggleIntro()">
-    <span>📖 &nbsp; Leer información sobre la boda</span>
-    <span class="arrow">▼</span>
-  </div>
-  <div class="intro-body" id="introBody">
-    <p>Con mucha alegría queremos contar contigo en un momento muy especial para nosotros. Nuestra boda se realizará en <strong>Chinauta</strong>, y antes de enviar la invitación formal, queremos conocer tu disponibilidad.</p>
-    <p>Te pedimos que respondas con total sinceridad, ya que cada confirmación será tenida en cuenta para la organización del evento, la reserva de cupos y la alimentación.</p>
-    <p>Sabemos que, por tratarse de un lugar retirado de Bogotá, para algunas personas puede ser difícil asistir, y lo entendemos perfectamente.</p>
-    <span class="quote">"Lo más importante es poder contar con una respuesta clara y honesta."</span>
-    <div class="center">
-      <span class="deadline-pill">📅 Cierre: 30 de junio de 2026</span>
-    </div>
-  </div>
+  <!-- FORMULARIO -->
+  <div class="card" id="formCard">
+    <div id="formContainer" class="form-container">
 
-  <!-- Progress -->
-  <div class="progress-bar" id="progressBar">
-    <div class="progress-fill" id="progressFill" style="width:20%"></div>
-  </div>
-  <div class="step-indicator" id="stepIndicator">
-    <div class="dot active" id="d1"></div>
-    <div class="dot" id="d2"></div>
-    <div class="dot" id="d3"></div>
-    <div class="dot" id="d4"></div>
-    <div class="dot" id="d5"></div>
-  </div>
-
-  <!-- STEP 1: Nombre -->
-  <div class="step active" id="step1">
-    <div class="card">
-      <h2>¿Cuál es tu nombre?</h2>
-      <p class="q-sub">Escribe tu nombre completo.</p>
-      <label class="field-label" for="nombre">Nombre completo</label>
-      <input type="text" id="nombre" placeholder="Ej: María González Ruiz" autocomplete="name" />
-      <p class="error-msg" id="err1">Por favor escribe tu nombre completo.</p>
-    </div>
-    <button class="btn-primary" onclick="goStep(1,2)">Continuar →</button>
-  </div>
-
-  <!-- STEP 2: Asistencia -->
-  <div class="step" id="step2">
-    <div class="card">
-      <h2>¿Podrás acompañarnos?</h2>
-      <p class="q-sub">La boda es en Chinauta — a dos horas de Bogotá. Entendemos si no es posible.</p>
-      <div class="radio-group">
-        <label class="radio-opt" id="optSi" onclick="selectAsistencia('si')">
-          <input type="radio" name="asistencia" value="si" id="rSi" />
-          <span>✅ &nbsp; <strong>Sí, confirmo mi asistencia</strong><br><small>Tengo la posibilidad real de asistir</small></span>
-        </label>
-        <label class="radio-opt" id="optNo" onclick="selectAsistencia('no')">
-          <input type="radio" name="asistencia" value="no" id="rNo" />
-          <span>❌ &nbsp; <strong>En esta ocasión no podré asistir</strong><br><small>Gracias por avisarnos con sinceridad</small></span>
-        </label>
+      <!-- Nombre -->
+      <div class="section">
+        <label class="section-label" for="nombre">Nombre completo</label>
+        <input type="text" id="nombre" placeholder="Ej: María González Ruiz" autocomplete="name" />
+        <p class="error-msg" id="err1">Por favor escribe tu nombre.</p>
       </div>
-      <p class="error-msg" id="err2">Por favor selecciona una opción.</p>
-    </div>
-    <button class="btn-primary" onclick="goStep(2,3)">Continuar →</button>
-    <button class="btn-back" onclick="goStep(2,1,true)">← Volver</button>
-  </div>
 
-  <!-- STEP 3: Personas / Mensaje -->
-  <div class="step" id="step3">
-    <div class="card">
-      <h2 id="s3title">¿Cuántas personas asistirán?</h2>
-      <p class="q-sub" id="s3sub">Inclúyete a ti. Luego indicarás el nombre de cada persona.</p>
-      <div id="numSection">
-        <label class="field-label">Número de personas (incluido tú)</label>
+      <!-- Asistencia -->
+      <div class="section">
+        <label class="section-label">¿Podrás acompañarnos?</label>
+        <p class="section-desc">La boda es en Chinauta — a dos horas de Bogotá.</p>
+        <div class="radio-group">
+          <label class="radio-opt" id="optSi" onclick="selectAsistencia('si')">
+            <input type="radio" name="asistencia" value="si" id="rSi" />
+            <span><strong>Sí, confirmo</strong><br><small>Tengo posibilidad real de asistir</small></span>
+          </label>
+          <label class="radio-opt" id="optNo" onclick="selectAsistencia('no')">
+            <input type="radio" name="asistencia" value="no" id="rNo" />
+            <span><strong>No podré asistir</strong><br><small>Gracias por tu comprensión</small></span>
+          </label>
+        </div>
+        <p class="error-msg" id="err2">Selecciona una opción.</p>
+      </div>
+
+      <!-- Niños menores (solo si asiste) -->
+      <div class="section section-hidden" id="ninosSection">
+        <label class="section-label">¿Asisten niños menores?</label>
+        <div class="radio-group">
+          <label class="radio-opt" id="optNinosNo" onclick="selectNinos('no')">
+            <input type="radio" name="ninos" value="no" id="nNo" />
+            <span>No</span>
+          </label>
+          <label class="radio-opt" id="optNinosSi" onclick="selectNinos('si')">
+            <input type="radio" name="ninos" value="si" id="nSi" />
+            <span>Sí</span>
+          </label>
+        </div>
+        <p class="error-msg" id="errNinos">Selecciona una opción.</p>
+      </div>
+
+      <!-- Cuántos niños (solo si niños = sí) -->
+      <div class="section section-hidden" id="numNinosSection">
+        <label class="section-label">¿Cuántos niños?</label>
+        <div class="num-grid" id="numNinosGrid"></div>
+        <p class="error-msg" id="errNumNinos">Selecciona cuántos niños.</p>
+      </div>
+
+      <!-- Número de personas (solo si asiste) -->
+      <div class="section section-hidden" id="numSection">
+        <label class="section-label">Número de personas (incluido tú)</label>
         <div class="num-grid" id="numGrid"></div>
         <p class="error-msg" id="err3a">Selecciona cuántas personas asistirán.</p>
       </div>
-      <div id="nombresSection" style="margin-top:1.2rem;display:none">
-        <label class="field-label" id="nombresLabel">Nombres completos de los asistentes</label>
-        <p style="font-size:13px;color:#8a7060;margin-bottom:7px">Escribe un nombre por línea.</p>
-        <textarea id="nombresAsist" placeholder="Ej:&#10;Juan Pérez&#10;Ana Gómez"></textarea>
-        <p class="error-msg" id="err3b">Por favor indica los nombres de las personas que asistirán.</p>
-      </div>
-    </div>
-    <button class="btn-primary" onclick="goStep(3,4)">Continuar →</button>
-    <button class="btn-back" onclick="goStep(3,2,true)">← Volver</button>
-  </div>
 
-  <!-- STEP 4: Hospedaje -->
-  <div class="step" id="step4">
-    <div class="card">
-      <h2 id="s4title">Servicio de estadía</h2>
-      <p class="q-sub" id="s4sub">¿Te interesaría recibir información sobre el hospedaje en la hacienda?</p>
-      <div id="hospInfoBlock" style="display:none">
-        <div class="hospedaje-info">
-          <p><strong>Esta opción incluye:</strong></p>
-          <ul>
-            <li>Estadía hasta las 5:00 p.m. del día siguiente</li>
-            <li>Uso de todas las instalaciones de la hacienda</li>
-          </ul>
-          <div class="price-row">
-            <div class="price-item">🏡 <span><strong>Hospedaje:</strong> $70.000 / persona</span></div>
-            <div class="price-item">🍳 <span><strong>Desayuno:</strong> $16.000 / persona</span></div>
-            <div class="price-item">🍽️ <span><strong>Almuerzo:</strong> $19.000 / persona</span></div>
+      <!-- Nombres (solo si asiste) -->
+      <div class="section section-hidden" id="nombresSection">
+        <label class="section-label" id="nombresLabel">Nombres completos</label>
+        <textarea id="nombresAsist" placeholder="Escribe un nombre por línea:&#10;Ej:&#10;Juan Pérez&#10;Ana Gómez"></textarea>
+        <p class="error-msg" id="err3b">Escribe los nombres de los asistentes.</p>
+      </div>
+
+      <!-- Mensaje (solo si NO asiste) -->
+      <div class="section section-hidden" id="mensajeSection">
+        <label class="section-label">¿Algo que quieras decirnos?</label>
+        <textarea id="mensaje" placeholder="Opcional: déjanos un mensaje..."></textarea>
+      </div>
+
+      <!-- Hospedaje (solo si asiste) -->
+      <div class="section section-hidden" id="hospSection">
+        <label class="section-label">Servicio de estadía</label>
+        <p class="section-desc">¿Te interesaría recibir información sobre el hospedaje?</p>
+        <div id="hospInfoBlock" class="section-hidden">
+          <div class="hospedaje-info">
+            <p><strong>Incluye:</strong></p>
+            <ul>
+              <li>Estadía hasta las 5:00 p.m. del día siguiente</li>
+              <li>Uso de todas las instalaciones de la hacienda</li>
+            </ul>
+            <div class="price-row">
+              <span class="price-item">🏡 Hospedaje: $70.000 / persona</span>
+              <span class="price-item">🍳 Desayuno: $16.000 / persona</span>
+              <span class="price-item">🍽️ Almuerzo: $19.000 / persona</span>
+            </div>
+            <p style="font-size:11px;color:#7a6060;margin-top:4px">Servicios opcionales. Cada persona asume su costo.</p>
           </div>
-          <p class="price-note">Servicios opcionales. Cada persona asumirá su propio costo.</p>
+        </div>
+        <div class="radio-group">
+          <label class="radio-opt" id="optHospSi" onclick="selectHospedaje('si')">
+            <input type="radio" name="hospedaje" value="si" id="hSi" />
+            <span>Sí, me interesa</span>
+          </label>
+          <label class="radio-opt" id="optHospNo" onclick="selectHospedaje('no')">
+            <input type="radio" name="hospedaje" value="no" id="hNo" />
+            <span>No, regreso el mismo día</span>
+          </label>
+        </div>
+        <p class="error-msg" id="err4">Selecciona una opción.</p>
+        <div class="section-hidden" id="hospConfirmBlock" style="margin-top:0.5rem">
+          <label class="confirm-check" id="chkHospLabel">
+            <input type="checkbox" id="chkHosp" onchange="toggleSelected('chkHospLabel',this.checked)" />
+            <span>Entiendo que el hospedaje y servicios son costo de cada persona.</span>
+          </label>
+          <p class="error-msg" id="err4b">Debes confirmar.</p>
         </div>
       </div>
-      <div class="radio-group" id="hospRadio">
-        <label class="radio-opt" id="optHospSi" onclick="selectHospedaje('si')">
-          <input type="radio" name="hospedaje" value="si" id="hSi" />
-          <span>🏡 &nbsp; <strong>Sí, me interesa recibir información sobre el hospedaje</strong></span>
-        </label>
-        <label class="radio-opt" id="optHospNo" onclick="selectHospedaje('no')">
-          <input type="radio" name="hospedaje" value="no" id="hNo" />
-          <span>🚗 &nbsp; <strong>No, regresaré el mismo día</strong></span>
-        </label>
-      </div>
-      <p class="error-msg" id="err4">Por favor selecciona una opción.</p>
-      <div id="hospConfirmBlock" style="display:none;margin-top:1rem">
-        <label class="confirm-check" id="chkHospLabel">
-          <input type="checkbox" id="chkHosp" onchange="toggleSelected('chkHospLabel',this.checked)" />
-          <span>Entiendo que el costo del hospedaje y los servicios adicionales será asumido por cada persona.</span>
-        </label>
-        <p class="error-msg" id="err4b">Debes confirmar que entiendes el costo del hospedaje para continuar.</p>
-      </div>
-    </div>
-    <button class="btn-primary" onclick="goStep(4,5)">Continuar →</button>
-    <button class="btn-back" onclick="goStep(4,3,true)">← Volver</button>
-  </div>
 
-  <!-- STEP 5: Confirmación final -->
-  <div class="step" id="step5">
-    <div class="card">
-      <h2>Confirmación final</h2>
-      <p class="q-sub">Revisa que todo esté correcto antes de enviar.</p>
-      <div class="resumen-box" id="resumenAsist"></div>
-      <label class="confirm-check" id="chkSincLabel">
-        <input type="checkbox" id="chkSinc" onchange="toggleSelected('chkSincLabel',this.checked)" />
-        <span>Confirmo que mi respuesta es sincera y que, si marco "Sí", lo hago sabiendo que mi asistencia será considerada para la organización del evento, la alimentación y los demás gastos relacionados.</span>
-      </label>
-      <p class="error-msg" id="err5">Debes marcar esta confirmación para continuar.</p>
-    </div>
-    <button class="btn-primary" id="btnEnviar" onclick="enviar()">Enviar confirmación ✓</button>
-    <button class="btn-back" onclick="goStep(5,4,true)">← Volver</button>
-  </div>
+      <!-- Confirmación final -->
+      <div class="section" style="margin-top:0.8rem">
+        <label class="confirm-check" id="chkSincLabel">
+          <input type="checkbox" id="chkSinc" onchange="toggleSelected('chkSincLabel',this.checked)" />
+          <span>Confirmo que mi respuesta es sincera y que, si confirmo asistencia, lo hago sabiendo que será considerada para la organización del evento.</span>
+        </label>
+        <p class="error-msg" id="err5">Debes marcar esta confirmación.</p>
+      </div>
 
-  <!-- THANK YOU -->
-  <div class="step" id="stepThanks">
-    <div class="card thank-you">
+      <!-- Enviar -->
+      <button class="btn-primary" id="btnEnviar" onclick="enviar()">Enviar confirmación ✓</button>
+
+    </div>
+
+    <!-- THANK YOU -->
+    <div class="thank-you" id="stepThanks">
       <span class="flower">🌸</span>
       <h2 id="thanksTitle">¡Gracias por tu respuesta!</h2>
       <p id="thanksMsg"></p>
@@ -428,185 +365,174 @@
 </div>
 
 <script>
-  
   var SHEET_URL = 'https://script.google.com/macros/s/AKfycbzNhxuNJR3yKIBHGoFrN4fWY8MRKqbK_zI4MI1oEfCZa56noCzf-53TMHzMvi-mIo26/exec';
 
   var asistencia = null;
   var numPersonas = 0;
   var hospedaje = null;
+  var ninos = null;
+  var numNinos = 0;
 
-  // Build number buttons
+  // Build number grids
   (function(){
     var g = document.getElementById('numGrid');
     for(var i = 1; i <= 10; i++){
-      var b = document.createElement('button');
-      b.type = 'button';
-      b.className = 'num-btn';
-      b.textContent = i;
-      b.setAttribute('data-n', i);
-      b.onclick = (function(n){ return function(){ selectNum(n); }; })(i);
-      g.appendChild(b);
+      (function(n){
+        var b = document.createElement('button');
+        b.type = 'button'; b.className = 'num-btn';
+        b.textContent = n;
+        b.onclick = function(){ selectNum(n); };
+        g.appendChild(b);
+      })(i);
+    }
+    var ng = document.getElementById('numNinosGrid');
+    for(var i = 1; i <= 5; i++){
+      (function(n){
+        var b = document.createElement('button');
+        b.type = 'button'; b.className = 'num-btn';
+        b.textContent = n;
+        b.onclick = function(){ selectNumNinos(n); };
+        ng.appendChild(b);
+      })(i);
     }
   })();
 
-  function toggleIntro(){
-    var body = document.getElementById('introBody');
-    var toggle = document.getElementById('introToggle');
-    var open = body.style.display === 'block';
-    body.style.display = open ? 'none' : 'block';
-    toggle.classList.toggle('open', !open);
-  }
-
-  function selectAsistencia(v){
-    asistencia = v;
-    document.getElementById('optSi').className = 'radio-opt' + (v==='si'?' selected':'');
-    document.getElementById('optNo').className = 'radio-opt' + (v==='no'?' selected':'');
-    document.getElementById('rSi').checked = (v==='si');
-    document.getElementById('rNo').checked = (v==='no');
-  }
-
-  function selectNum(n){
-    numPersonas = n;
-    document.querySelectorAll('.num-btn').forEach(function(b){
-      b.classList.toggle('selected', parseInt(b.getAttribute('data-n')) === n);
-    });
-    document.getElementById('nombresSection').style.display = 'block';
-    document.getElementById('nombresAsist').placeholder =
-      n === 1 ? 'Escribe tu nombre completo' : 'Escribe un nombre por línea:\nEj:\nJuan Pérez\nAna Gómez';
-  }
-
-  function selectHospedaje(v){
-    hospedaje = v;
-    document.getElementById('optHospSi').className = 'radio-opt' + (v==='si'?' selected':'');
-    document.getElementById('optHospNo').className = 'radio-opt' + (v==='no'?' selected':'');
-    document.getElementById('hSi').checked = (v==='si');
-    document.getElementById('hNo').checked = (v==='no');
-    document.getElementById('hospInfoBlock').style.display = (v==='si'?'block':'none');
-    document.getElementById('hospConfirmBlock').style.display = (v==='si'?'block':'none');
-  }
-
   function toggleSelected(id, on){
-    var el = document.getElementById(id);
-    if(on) el.classList.add('selected'); else el.classList.remove('selected');
+    document.getElementById(id).classList.toggle('selected', on);
   }
 
   function showErr(id, show){
     document.getElementById(id).style.display = show ? 'block' : 'none';
   }
 
-  function updateProgress(s){
-    document.getElementById('progressFill').style.width = Math.round((s/5)*100) + '%';
-    for(var i = 1; i <= 5; i++){
-      var d = document.getElementById('d'+i);
-      if(i < s) d.className = 'dot done';
-      else if(i === s) d.className = 'dot active';
-      else d.className = 'dot';
-    }
+  function show(id){
+    document.getElementById(id).classList.remove('section-hidden');
   }
 
-  function showStep(n){
-    document.querySelectorAll('.step').forEach(function(s){ s.classList.remove('active'); });
-    document.getElementById('step'+n).classList.add('active');
-    updateProgress(n);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  function hide(id){
+    document.getElementById(id).classList.add('section-hidden');
   }
 
-  function configStep3(){
-    if(asistencia === 'no'){
-      document.getElementById('s3title').textContent = '¿Hay algo que quieras decirnos?';
-      document.getElementById('s3sub').textContent = 'Opcional: si quieres dejarnos un mensaje, con gusto lo recibiremos.';
-      document.getElementById('numSection').style.display = 'none';
-      document.getElementById('nombresSection').style.display = 'block';
-      document.getElementById('nombresLabel').textContent = 'Mensaje opcional para los novios';
-      document.getElementById('nombresAsist').placeholder = 'Escribe aquí tu mensaje (opcional)...';
+  function selectAsistencia(v){
+    asistencia = v;
+    document.getElementById('optSi').className = 'radio-opt' + (v === 'si' ? ' selected' : '');
+    document.getElementById('optNo').className = 'radio-opt' + (v === 'no' ? ' selected' : '');
+    document.getElementById('rSi').checked = v === 'si';
+    document.getElementById('rNo').checked = v === 'no';
+    showErr('err2', false);
+
+    if (v === 'no') {
+      hide('ninosSection'); hide('numNinosSection');
+      hide('numSection'); hide('nombresSection');
+      hide('hospSection');
+      show('mensajeSection');
     } else {
-      document.getElementById('s3title').textContent = '¿Cuántas personas asistirán?';
-      document.getElementById('s3sub').textContent = 'Inclúyete a ti. Luego indicarás el nombre de cada persona.';
-      document.getElementById('numSection').style.display = 'block';
+      show('ninosSection');
+      hide('numNinosSection');
+      hide('numSection'); hide('nombresSection');
+      hide('hospSection');
+      hide('mensajeSection');
     }
   }
 
-  function configStep4(){
-    if(asistencia === 'no'){
-      document.getElementById('s4title').textContent = '¡Gracias por avisar!';
-      document.getElementById('s4sub').textContent = 'Los novios agradecen tu sinceridad y te mandan todo su cariño.';
-      document.getElementById('hospRadio').style.display = 'none';
-      document.getElementById('hospInfoBlock').style.display = 'none';
-      document.getElementById('hospConfirmBlock').style.display = 'none';
+  function selectNinos(v){
+    ninos = v;
+    document.getElementById('optNinosNo').className = 'radio-opt' + (v === 'no' ? ' selected' : '');
+    document.getElementById('optNinosSi').className = 'radio-opt' + (v === 'si' ? ' selected' : '');
+    document.getElementById('nNo').checked = v === 'no';
+    document.getElementById('nSi').checked = v === 'si';
+    showErr('errNinos', false);
+
+    if (v === 'si') {
+      show('numNinosSection');
     } else {
-      document.getElementById('s4title').textContent = 'Servicio de estadía';
-      document.getElementById('s4sub').textContent = '¿Te interesaría recibir información sobre el hospedaje en la hacienda?';
-      document.getElementById('hospRadio').style.display = 'flex';
+      hide('numNinosSection');
     }
+    show('numSection');
+    show('nombresSection');
+    show('hospSection');
   }
 
-  function buildResumen(){
+  function selectNumNinos(n){
+    numNinos = n;
+    document.querySelectorAll('#numNinosGrid .num-btn').forEach(function(b){
+      b.classList.toggle('selected', parseInt(b.textContent) === n);
+    });
+    showErr('errNumNinos', false);
+  }
+
+  function selectNum(n){
+    numPersonas = n;
+    document.querySelectorAll('#numGrid .num-btn').forEach(function(b){
+      b.classList.toggle('selected', parseInt(b.textContent) === n);
+    });
+    showErr('err3a', false);
+    document.getElementById('nombresAsist').placeholder =
+      n === 1 ? 'Escribe tu nombre completo' : 'Escribe un nombre por línea:\nEj:\nJuan Pérez\nAna Gómez';
+  }
+
+  function selectHospedaje(v){
+    hospedaje = v;
+    document.getElementById('optHospSi').className = 'radio-opt' + (v === 'si' ? ' selected' : '');
+    document.getElementById('optHospNo').className = 'radio-opt' + (v === 'no' ? ' selected' : '');
+    document.getElementById('hSi').checked = v === 'si';
+    document.getElementById('hNo').checked = v === 'no';
+    showErr('err4', false);
+
+    document.getElementById('hospInfoBlock').style.display = v === 'si' ? 'block' : 'none';
+    document.getElementById('hospConfirmBlock').style.display = v === 'si' ? 'block' : 'none';
+  }
+
+  function validar(){
+    var ok = true;
     var nom = document.getElementById('nombre').value.trim();
-    var html = '<strong>Nombre:</strong> ' + nom + '<br>';
-    if(asistencia === 'si'){
-      html += '<strong>Asistencia:</strong> ✅ Confirmada<br>';
-      html += '<strong>Número de personas:</strong> ' + numPersonas + '<br>';
-      var names = document.getElementById('nombresAsist').value.trim();
-      if(names) html += '<strong>Asistentes:</strong><br>' + names.replace(/\n/g,'<br>') + '<br>';
-      html += '<strong>Hospedaje:</strong> ' + (hospedaje==='si' ? 'Le interesa recibir información' : 'Regresa el mismo día');
-    } else {
-      html += '<strong>Asistencia:</strong> ❌ No podrá asistir';
-      var msg = document.getElementById('nombresAsist').value.trim();
-      if(msg) html += '<br><strong>Mensaje:</strong> ' + msg;
-    }
-    document.getElementById('resumenAsist').innerHTML = html;
-  }
+    showErr('err1', !nom); if(!nom) ok = false;
 
-  function goStep(from, to, back){
-    if(!back){
-      if(from === 1){
-        var n = document.getElementById('nombre').value.trim();
-        showErr('err1', !n); if(!n) return;
+    showErr('err2', !asistencia); if(!asistencia) ok = false;
+
+    if (asistencia === 'si') {
+      showErr('errNinos', !ninos); if(!ninos) ok = false;
+      if (ninos === 'si') {
+        showErr('errNumNinos', !numNinos); if(!numNinos) ok = false;
       }
-      if(from === 2){
-        showErr('err2', !asistencia); if(!asistencia) return;
-        configStep3();
-      }
-      if(from === 3){
-        if(asistencia === 'si'){
-          showErr('err3a', !numPersonas); if(!numPersonas) return;
-          var nb = document.getElementById('nombresAsist').value.trim();
-          showErr('err3b', !nb); if(!nb) return;
-        }
-        configStep4();
-      }
-      if(from === 4){
-        if(asistencia === 'si'){
-          showErr('err4', !hospedaje); if(!hospedaje) return;
-          if(hospedaje === 'si'){
-            var chk = document.getElementById('chkHosp').checked;
-            showErr('err4b', !chk); if(!chk) return;
-          }
-        }
-        buildResumen();
+      showErr('err3a', !numPersonas); if(!numPersonas) ok = false;
+      var nb = document.getElementById('nombresAsist').value.trim();
+      showErr('err3b', !nb); if(!nb) ok = false;
+
+      showErr('err4', !hospedaje); if(!hospedaje) ok = false;
+      if (hospedaje === 'si') {
+        var chk = document.getElementById('chkHosp').checked;
+        showErr('err4b', !chk); if(!chk) ok = false;
       }
     }
-    showStep(to);
+
+    var chkF = document.getElementById('chkSinc').checked;
+    showErr('err5', !chkF); if(!chkF) ok = false;
+
+    return ok;
   }
 
   function enviar(){
-    var chk = document.getElementById('chkSinc').checked;
-    showErr('err5', !chk); if(!chk) return;
+    if (!validar()) return;
 
     var btn = document.getElementById('btnEnviar');
     btn.disabled = true;
     btn.innerHTML = '<span class="spinner"></span>Enviando...';
 
+    var nombresVal = asistencia === 'si' ? document.getElementById('nombresAsist').value.trim() : '';
+    var mensajeVal = asistencia === 'no' ? document.getElementById('mensaje').value.trim() : '';
+    var ninosVal = asistencia === 'si' ? (ninos === 'si' ? 'Sí, ' + numNinos + (numNinos === 1 ? ' niño' : ' niños') : 'No') : '';
+
     var payload = {
       nombre: document.getElementById('nombre').value.trim(),
       asistencia: asistencia === 'si' ? 'Sí, confirma asistencia' : 'No podrá asistir',
       numPersonas: asistencia === 'si' ? numPersonas : '',
-      nombresAsist: asistencia === 'si' ? document.getElementById('nombresAsist').value.trim() : '',
+      ninos: ninosVal,
+      nombresAsist: nombresVal,
       hospedaje: asistencia === 'si' ? (hospedaje === 'si' ? 'Le interesa hospedaje' : 'Regresa el mismo día') : '',
-      mensaje: asistencia === 'no' ? document.getElementById('nombresAsist').value.trim() : ''
+      mensaje: mensajeVal
     };
 
-    // Usamos un formulario oculto + iframe para evitar CORS
     var iframe = document.createElement('iframe');
     iframe.name = 'submitFrame';
     iframe.style.display = 'none';
@@ -620,34 +546,29 @@
 
     for (var key in payload) {
       var inp = document.createElement('input');
-      inp.type = 'hidden';
-      inp.name = key;
-      inp.value = payload[key];
+      inp.type = 'hidden'; inp.name = key; inp.value = payload[key];
       form.appendChild(inp);
     }
 
     document.body.appendChild(form);
     form.submit();
-
-    // La respuesta del script se carga en el iframe, mostramos gracias
     mostrarGracias();
   }
 
   function mostrarGracias(){
-    document.getElementById('progressBar').style.display = 'none';
-    document.getElementById('stepIndicator').style.display = 'none';
-    document.querySelectorAll('.step').forEach(function(s){ s.classList.remove('active'); });
-    document.getElementById('stepThanks').classList.add('active');
+    document.getElementById('formContainer').style.display = 'none';
+    document.getElementById('stepThanks').style.display = 'block';
 
     var nom = document.getElementById('nombre').value.trim();
     var firstName = nom.split(' ')[0];
 
-    if(asistencia === 'si'){
+    if (asistencia === 'si') {
       document.getElementById('thanksTitle').textContent = '¡Gracias, ' + firstName + '!';
       document.getElementById('thanksMsg').textContent =
-        'Tu confirmación fue registrada con éxito. Los novios están muy felices de contar contigo en este día tan especial. Pronto recibirás la invitación formal.';
+        'Tu confirmación fue registrada con éxito. Los novios están muy felices de contar contigo. Pronto recibirás la invitación formal.';
       var det = 'Asistencia confirmada · ' + numPersonas + ' persona(s)';
-      if(hospedaje === 'si') det += ' · Interesado/a en hospedaje';
+      if (ninos === 'si') det += ' · ' + numNinos + (numNinos === 1 ? ' niño' : ' niños');
+      if (hospedaje === 'si') det += ' · Interesado/a en hospedaje';
       document.getElementById('thanksDetail').textContent = det;
     } else {
       document.getElementById('thanksTitle').textContent = '¡Gracias por avisar, ' + firstName + '!';
@@ -655,7 +576,6 @@
         'Los novios entienden perfectamente y agradecen mucho tu honestidad. Te desean todo lo mejor.';
       document.getElementById('thanksDetail').textContent = 'Respuesta registrada · No podrá asistir';
     }
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 </script>
 </body>
