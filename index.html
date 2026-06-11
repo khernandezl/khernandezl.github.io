@@ -154,6 +154,25 @@
     }
     textarea:focus { border-color: #b08a6e; background: #fff; }
 
+    /* Nombre inputs individuales */
+    .nombre-input-label {
+      display: block;
+      font-size: 12px;
+      font-weight: 500;
+      color: #7d4e2e;
+      margin-top: 0.4rem;
+      margin-bottom: 2px;
+    }
+    .nombre-input {
+      width: 100%; padding: 10px 12px;
+      font-family: 'Jost', sans-serif; font-size: 15px;
+      border: 1.5px solid #ddd0c6; border-radius: 8px;
+      background: #fdf9f6; color: #2d1e16; outline: none;
+      transition: border-color 0.2s, background 0.2s;
+      -webkit-appearance: none; appearance: none;
+    }
+    .nombre-input:focus { border-color: #b08a6e; background: #fff; }
+
     /* Hospedaje info */
     .hospedaje-info {
       background: #fdf0e6; border: 1px solid #e8cdb0;
@@ -227,6 +246,7 @@
       .section { margin-top: 0.5rem; }
       .radio-opt { padding: 8px 10px; font-size: 13px; }
       .num-btn { padding: 7px 0; font-size: 13px; }
+      .nombre-input { padding: 8px 10px; font-size: 14px; }
       .btn-primary { padding: 10px; font-size: 13px; margin-top: 0.6rem; }
     }
   </style>
@@ -245,7 +265,7 @@
     <p>🌸 ¡Nos vamos a casar y queremos contarte!<br>
     Antes de enviarte la invitación formal, queremos saber si podrás acompañarnos en Chinauta. Tu respuesta, sea cual sea, nos ayuda muchísimo a organizarnos con amor y detalle. 💛<br>
     Sabemos que la distancia puede complicarlo, ¡y lo entendemos perfectamente!</p>
-    <p class="leyenda-meta">📅 Cierre: 30 de junio de 2026 · 🏡 Opción de hospedaje (costo por persona)</p>
+    <p class="leyenda-meta">📅 Cierre de confirmación de asistencia: 30 de junio de 2026 · 🏡 Hospedaje opcional (costo por persona)</p>
   </div>
 
   <!-- FORMULARIO -->
@@ -306,11 +326,11 @@
         <p class="error-msg" id="err3a">Selecciona cuántas personas asistirán.</p>
       </div>
 
-      <!-- Nombres (solo si asiste) -->
+      <!-- Nombres individuales (solo si asiste) -->
       <div class="section section-hidden" id="nombresSection">
-        <label class="section-label" id="nombresLabel">Nombres completos</label>
-        <textarea id="nombresAsist" placeholder="Escribe un nombre por línea:&#10;Ej:&#10;Juan Pérez&#10;Ana Gómez"></textarea>
-        <p class="error-msg" id="err3b">Escribe los nombres de los asistentes.</p>
+        <label class="section-label" id="nombresLabel">Nombres de los asistentes</label>
+        <div id="nombresContainer"></div>
+        <p class="error-msg" id="err3b">Completa todos los nombres.</p>
       </div>
 
       <!-- Mensaje (solo si NO asiste) -->
@@ -384,7 +404,7 @@
 </div>
 
 <script>
-  var SHEET_URL = 'https://script.google.com/macros/s/AKfycbwEGJN2hfxhrf3-O04jEPIC79u-6qTGXag_O400qYBIfJxESX5_RhuXNGXo5uKtLDX6/exec';
+  var SHEET_URL = 'https://script.google.com/macros/s/AKfycbxjxPj97DXiHbSAxMncykOf85qpJZtddZBVZfM5Xq1vuCDP7YuiN15tY-CQLpoJjVNS/exec';
 
   var asistencia = null;
   var numPersonas = 0;
@@ -486,8 +506,29 @@
       b.classList.toggle('selected', parseInt(b.textContent) === n);
     });
     showErr('err3a', false);
-    document.getElementById('nombresAsist').placeholder =
-      n === 1 ? 'Escribe tu nombre completo' : 'Escribe un nombre por línea:\nEj:\nJuan Pérez\nAna Gómez';
+
+    var container = document.getElementById('nombresContainer');
+    container.innerHTML = '';
+    for (var i = 1; i <= n; i++) {
+      var label = document.createElement('label');
+      label.className = 'nombre-input-label';
+      label.textContent = 'Persona ' + i;
+
+      var input = document.createElement('input');
+      input.type = 'text';
+      input.className = 'nombre-input';
+      input.placeholder = i === 1 ? 'Tu nombre completo' : 'Nombre completo';
+      input.setAttribute('data-idx', i);
+
+      var err = document.createElement('p');
+      err.className = 'error-msg';
+      err.id = 'err_nom_' + i;
+      err.textContent = 'Escribe el nombre de la persona ' + i + '.';
+
+      container.appendChild(label);
+      container.appendChild(input);
+      container.appendChild(err);
+    }
   }
 
   function selectHospedaje(v){
@@ -515,8 +556,14 @@
         showErr('errNumNinos', !numNinos); if(!numNinos) ok = false;
       }
       showErr('err3a', !numPersonas); if(!numPersonas) ok = false;
-      var nb = document.getElementById('nombresAsist').value.trim();
-      showErr('err3b', !nb); if(!nb) ok = false;
+      var allNames = true;
+      for (var i = 1; i <= numPersonas; i++) {
+        var inp = document.querySelector('#nombresContainer input[data-idx="' + i + '"]');
+        var val = inp ? inp.value.trim() : '';
+        showErr('err_nom_' + i, !val);
+        if (!val) allNames = false;
+      }
+      showErr('err3b', !allNames); if(!allNames) ok = false;
 
       showErr('err4', !hospedaje); if(!hospedaje) ok = false;
       if (hospedaje === 'si') {
@@ -538,15 +585,25 @@
     btn.disabled = true;
     btn.innerHTML = '<span class="spinner"></span>Enviando...';
 
-    var nombresVal = asistencia === 'si' ? document.getElementById('nombresAsist').value.trim() : '';
+    var nombresVal = '';
+    if (asistencia === 'si') {
+      var names = [];
+      for (var i = 1; i <= numPersonas; i++) {
+        var inp = document.querySelector('#nombresContainer input[data-idx="' + i + '"]');
+        if (inp) names.push(inp.value.trim());
+      }
+      nombresVal = names.join(', ');
+    }
     var mensajeVal = asistencia === 'no' ? document.getElementById('mensaje').value.trim() : '';
     var ninosVal = asistencia === 'si' ? (ninos === 'si' ? 'Sí, ' + numNinos + (numNinos === 1 ? ' niño' : ' niños') : 'No') : '';
+    var numNinosVal = asistencia === 'si' && ninos === 'si' ? numNinos : 0;
 
     var payload = {
       nombre: document.getElementById('nombre').value.trim(),
       asistencia: asistencia === 'si' ? 'Sí, confirma asistencia' : 'No podrá asistir',
       numPersonas: asistencia === 'si' ? numPersonas : '',
       ninos: ninosVal,
+      numNinos: numNinosVal,
       nombresAsist: nombresVal,
       hospedaje: asistencia === 'si' ? (hospedaje === 'si' ? 'Le interesa hospedaje' : 'Regresa el mismo día') : '',
       mensaje: mensajeVal
@@ -585,9 +642,9 @@
       document.getElementById('thanksTitle').textContent = '¡Gracias, ' + firstName + '!';
       document.getElementById('thanksMsg').textContent =
         'Tu confirmación fue registrada con éxito. Los novios están muy felices de contar contigo. Pronto recibirás la invitación formal.';
-      var det = 'Asistencia confirmada · ' + numPersonas + ' persona(s)';
-      if (ninos === 'si') det += ' · ' + numNinos + (numNinos === 1 ? ' niño' : ' niños');
-      if (hospedaje === 'si') det += ' · Interesado/a en hospedaje';
+      var det = numPersonas + ' persona(s)';
+      det += ' · Con niños: ' + (ninos === 'si' ? '✔' : '✘');
+      if (hospedaje === 'si') det += ' · 🏡 Interesado/a en hospedaje';
       document.getElementById('thanksDetail').textContent = det;
     } else {
       document.getElementById('thanksTitle').textContent = '¡Gracias por avisar, ' + firstName + '!';
