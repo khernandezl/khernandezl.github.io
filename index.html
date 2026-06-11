@@ -412,6 +412,23 @@
   var ninos = null;
   var numNinos = 0;
 
+  // Enter key avanza al siguiente campo o envía
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Enter') {
+      var tag = e.target.tagName;
+      if (tag === 'INPUT' || tag === 'TEXTAREA') {
+        e.preventDefault();
+        var inputs = document.querySelectorAll('#formContainer input[type="text"], #formContainer textarea');
+        var idx = Array.prototype.indexOf.call(inputs, e.target);
+        if (idx >= 0 && idx < inputs.length - 1) {
+          inputs[idx + 1].focus();
+        } else {
+          document.getElementById('btnEnviar').click();
+        }
+      }
+    }
+  });
+
   // Build number grids
   (function(){
     var g = document.getElementById('numGrid');
